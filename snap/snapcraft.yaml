@@ -1,4 +1,5 @@
 name: netplan
+base: core18
 version: git
 summary: Backend-agnostic network configuration in YAML
 description: |
@@ -7,17 +8,22 @@ description: |
   what each should be configured to do. From this description Netplan will
   generate all the necessary configuration for your chosen renderer tool.
 grade: devel
-confinement: classic
+confinement: strict
 
 apps:
   netplan:
     command: usr/sbin/netplan
     environment:
       PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3/dist-packages
+    adapter: full
+    plugs:
+      - network
+      - network-bind
+      - network-setup-control
 
 parts:
   netplan:
-    source: https://github.com/CanonicalLtd/netplan.git
+    source: .
     plugin: make
     build-packages:
       - bash-completion
@@ -34,9 +40,11 @@ parts:
       - pyflakes3
       - pep8
       - systemd
+      - libsystemd-dev
     stage-packages:
       - iproute2
       - python3
       - python3-netifaces
       - python3-yaml
       - systemd
+      - libatm1
