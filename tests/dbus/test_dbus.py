@@ -161,7 +161,7 @@ class TestNetplanDBus(unittest.TestCase):
 
     def test_netplan_dbus_no_such_command(self):
         p = subprocess.Popen(
-            ["busctl", "call",
+            ["busctl", "call", "--system",
              "io.netplan.Netplan",
              "/io/netplan/Netplan",
              "io.netplan.Netplan",
