@@ -14,7 +14,7 @@ apps:
   netplan:
     command: usr/sbin/netplan
     environment:
-      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3/dist-packages
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
     adapter: full
     plugs:
       - network
