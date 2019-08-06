@@ -10,3 +10,5 @@ __pycache__
 src/_features.h
 netplan/_features.py
 dbus/io.netplan.Netplan.service
+*.snap
+squashfs-root/
