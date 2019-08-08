@@ -12,7 +12,7 @@ confinement: strict
 
 apps:
   netplan:
-    command: usr/sbin/netplan
+    command: usr/bin/python3 $SNAP/usr/sbin/netplan
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
     adapter: full
